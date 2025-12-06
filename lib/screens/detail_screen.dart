@@ -1,10 +1,8 @@
-import 'package:animeverses/widgets/app_scaffold.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:animeverses/models/anime.dart';
+import 'package:animeverses/widgets/app_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../data/dummy_data.dart';
-import '../models/anime.dart';
 import '../provider/app_state_provider.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -68,16 +66,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    final screenHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
-    // Fetch anime by ID from DummyData
     if (_isLoading) {
       return AppScaffold(
         body: const Center(
@@ -96,7 +87,6 @@ class _DetailScreenState extends State<DetailScreen> {
       );
     }
 
-    // Handle case when anime is not found
     if (_errorMessage != null || _anime == null) {
       return AppScaffold(
         body: Center(
@@ -116,7 +106,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
-              textAlign: TextAlign.center,
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: screenHeight * 0.03),
               ElevatedButton(
@@ -137,7 +127,6 @@ class _DetailScreenState extends State<DetailScreen> {
     return AppScaffold(
       body: CustomScrollView(
         slivers: [
-          // Header section with image and title
           SliverAppBar(
             floating: true,
             pinned: true,
@@ -168,7 +157,6 @@ class _DetailScreenState extends State<DetailScreen> {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  // Background image
                   (anime.largeImageUrl ?? anime.imageUrl) != null
                       ? CachedNetworkImage(
                     imageUrl: anime.largeImageUrl ?? anime.imageUrl ?? '',
@@ -205,7 +193,6 @@ class _DetailScreenState extends State<DetailScreen> {
                       ],
                     ),
                   ),
-                  // Gradient overlay for better text visibility
                   Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -229,6 +216,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
+                        // Title and Genre Column
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,8 +231,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     Shadow(
                                       offset: const Offset(0, 2),
                                       blurRadius: 4,
-                                      color: Colors.black.withValues(
-                                          alpha: 0.7),
+                                      color: Colors.black.withValues(alpha: 0.7),
                                     ),
                                   ],
                                 ),
@@ -260,8 +247,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     Shadow(
                                       offset: const Offset(0, 1),
                                       blurRadius: 2,
-                                      color: Colors.black.withValues(
-                                          alpha: 0.7),
+                                      color: Colors.black.withValues(alpha: 0.7),
                                     ),
                                   ],
                                 ),
@@ -269,10 +255,10 @@ class _DetailScreenState extends State<DetailScreen> {
                             ],
                           ),
                         ),
+                        // Favorite Button
                         Consumer<AppStateProvider>(
                           builder: (context, favoriteProvider, child) {
-                            final isFavorite = favoriteProvider.isFavorite(
-                                anime.malId);
+                            final isFavorite = favoriteProvider.isFavorite(anime.malId);
 
                             return Container(
                               margin: EdgeInsets.only(left: screenWidth * 0.03),
@@ -291,8 +277,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                               child: IconButton(
                                 icon: Icon(
-                                  isFavorite ? Icons.favorite : Icons
-                                      .favorite_border,
+                                  isFavorite ? Icons.favorite : Icons.favorite_border,
                                   color: Colors.white,
                                   size: screenWidth * 0.07,
                                 ),
@@ -335,8 +320,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               offset: Offset(0, screenHeight * 0.005),
                             ),
                           ],
-                          borderRadius: BorderRadius.circular(
-                              screenWidth * 0.02),
+                          borderRadius: BorderRadius.circular(screenWidth * 0.02),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -358,7 +342,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenWidth * 0.05),
+                      SizedBox(width: screenWidth * 0.03),
                       // Total Episodes
                       Container(
                         padding: EdgeInsets.symmetric(
@@ -374,8 +358,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               offset: Offset(0, screenHeight * 0.005),
                             ),
                           ],
-                          borderRadius: BorderRadius.circular(
-                              screenWidth * 0.02),
+                          borderRadius: BorderRadius.circular(screenWidth * 0.02),
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -396,7 +379,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   ),
 
@@ -417,7 +400,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   Text(
                     anime.description,
                     style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.9),
+                      color: Colors.white.withValues(alpha:0.9),
                       fontSize: screenWidth * 0.038,
                       height: 1.5,
                     ),

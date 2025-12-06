@@ -1,13 +1,12 @@
 import 'package:animeverses/widgets/app_scaffold.dart';
-import 'package:animeverses/data/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/app_state_provider.dart';
 import '../widgets/favorite_anime_card.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
+
   @override
   State<FavoriteScreen> createState() => _FavoriteScreenState();
 }
@@ -120,7 +119,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
           SizedBox(height: screenHeight * 0.01),
 
-          // Favorite Anime List
+          // Favorite Anime List - Dynamic with Provider
           Expanded(
             child: Consumer<AppStateProvider>(
               builder: (context, favoriteProvider, child) {

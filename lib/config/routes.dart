@@ -20,7 +20,8 @@ class AppRoutes {
 }
 
 GoRouter createRouter() {
-  final GlobalKey<NavigatorState> rootNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> rootNavigatorKey =
+  GlobalKey<NavigatorState>();
 
   return GoRouter(
     navigatorKey: rootNavigatorKey,
@@ -43,6 +44,7 @@ GoRouter createRouter() {
       return null;
     },
     refreshListenable: AuthStateNotifier(),
+
     routes: [
       GoRoute(
         path: AppRoutes.signIn,

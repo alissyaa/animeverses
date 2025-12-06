@@ -1,6 +1,6 @@
 import 'package:animeverses/provider/app_state_provider.dart';
 import 'package:animeverses/provider/auth_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide AuthProvider;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
