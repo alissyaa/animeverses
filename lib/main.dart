@@ -1,5 +1,6 @@
-import 'package:animeverses/screens/signin_screen.dart';
+import 'package:animeverses/provider/app_state_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'config/routes.dart';
 
@@ -12,13 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'AnimeVerse',
-      theme: ThemeData(
-        fontFamily: 'Urbanist',
-      ),
-      routerConfig: createRouter(),
-      debugShowCheckedModeBanner: false,
+    return ChangeNotifierProvider(
+        create: (_) => AppStateProvider(),
+        child: MaterialApp.router(
+          title: 'AnimeVerse',
+          theme: ThemeData(
+            fontFamily: 'Urbanist',
+          ),
+          routerConfig: createRouter(),
+          debugShowCheckedModeBanner: false,
+        ),
     );
   }
 }
