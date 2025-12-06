@@ -106,9 +106,9 @@ flutter:
 flutter_launcher_icons:
   android: true
   ios: false
-  image_path: "assets/images/logolagi.jpeg"
+  image_path: "assets/images/logolagi.jpg"
   adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/logolagi.jpeg"
+  adaptive_icon_foreground: "assets/images/logolagi.jpg"
 
 # ↓↓↓ SPLASH SCREEN CONFIG (juga di luar flutter:)
 flutter_native_splash:
