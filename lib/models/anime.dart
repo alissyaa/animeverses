@@ -94,7 +94,7 @@ class Anime {
 
   String get id => malId.toString();
   String get imagePath => imageUrl ?? '';
-  String get genre => genres.join(', ');
+  String get genre => genres.join(', '); //tes
   String get rating => score?.toStringAsFixed(2) ?? 'N/A';
   String get totalEpisodes => episodes?.toString() ?? 'Unknown';
   String get description => synopsis ?? 'No description available';
